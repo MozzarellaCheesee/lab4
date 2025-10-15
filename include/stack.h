@@ -3,16 +3,19 @@
 #include <stdlib.h>
 #include "utils.h"
 
-typedef struct {
-    int data;
-    struct Node* next;
-} Node;
+typedef struct Node Node;
+typedef struct Stack Stack;
 
-typedef struct {
+struct Node {
+    int data;
+    Node* next;
+};
+
+struct Stack {
     int max_size;
     int size;
     Node* top;
-} Stack;
+};
 
 Stack* createStack(int);
 
@@ -27,4 +30,6 @@ void push(Stack*);
 void pop(Stack*);
 
 void freeStack(Stack*);
+
+void isInStack(Stack*);
 

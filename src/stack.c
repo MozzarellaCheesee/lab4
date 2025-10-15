@@ -31,7 +31,7 @@ void push(Stack* stack) {
     printf("Enter number: ");
     scanf("%d", &data);
     newNode->data = data;
-    newNode->next = (struct Node *) stack->top;
+    newNode->next = stack->top;
     stack->size++;
     stack->top = newNode;
     clear();
@@ -43,7 +43,7 @@ void pop(Stack* stack) {
     peek(stack);
     Node* temp = stack->top;
     stack->size--;
-    stack->top = (Node*) temp->next;
+    stack->top = temp->next;
     free(temp);
 }
 
@@ -52,5 +52,21 @@ void freeStack(Stack* stack) {
     free(stack);
     clear();
 }
+
+void isInStack(Stack* stack) {
+    int value;
+    printf("Enter number for find: ");
+    scanf("%d", &value);
+    Node* current = stack->top;
+    clear();
+    for (int i = 0; i < stack->size; i++) {
+        if (current->data == value) {
+            printf("Element %d is found on the stack and is at index %d\n\n", value, i);
+            return;
+        }
+        current = current->next;
+    }
+    printf("The element is not on the stack.\n\n");
+};
 
 
